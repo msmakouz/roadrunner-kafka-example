@@ -1,0 +1,12 @@
+{
+    "require": {
+        "spiral/roadrunner-jobs": "dev-feature/kafka",
+        "symfony/var-dumper": "^6.0",
+        "spiral/roadrunner-cli": "^2.3"
+    },
+    "autoload": {
+        "files": [
+            "helpers.php"
+        ]
+    }
+}

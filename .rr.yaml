@@ -1,0 +1,41 @@
+version: '2.7'
+
+rpc:
+  listen: tcp://127.0.0.1:6001
+
+server:
+  command: "php consumer.php"
+  relay: pipes
+
+kafka:
+    addrs: localhost:9092
+
+#
+# In this section, the jobs themselves are configured
+#
+jobs:
+  consume: [ "test-kafka" ]
+  pool:
+    num_workers: 2
+    supervisor:
+      max_worker_memory: 100
+  pipelines:
+      test-kafka:
+          driver: kafka
+          config:
+
+              # Topic name: https://kafka.apache.org/intro#intro_concepts_and_terms
+              #
+              # This option is required and should not be empty.
+              topic: mytopic
+
+              # Kafka producer options
+              #
+              # Optional, default: depends on Kafka version
+              producer_options:
+
+              # Options
+
+              # Kafka consumer options
+              consumer_options:
+              # Options...
